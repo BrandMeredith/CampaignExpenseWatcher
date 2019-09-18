@@ -17,6 +17,12 @@ from flask import request
 def homepage():
     return render_template("bootstrap_template.html")
 
+## example page from tutorial
+@app.route('/index')
+def index():
+   user = { 'nickname': 'Miguel' } # fake user
+   return render_template("index.html", title = 'Home', user = user)
+
 # example page for linking things
 @app.route('/example_linked')
 def linked_example():

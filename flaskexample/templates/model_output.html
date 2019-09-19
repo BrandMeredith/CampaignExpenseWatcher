@@ -39,19 +39,19 @@
 
 <div class="container">
    <div class="starter-template">
-       <h2>Output Page</h2>
-       <p>Enter some user input</p>
+       <h2>Campaing Outlier Detection</h2>
+       <p>To find outliers broken down by category, please fill in the form below and submit.</p>
    </div>
 
    <div class = "container">
 
      <form action="/model_output" method="GET">
        <div class="form-group">
-         <label for="birth_month">Birth Month:</label>
-         <input type="text" id="birth_month" name='birth_month' placeholder="e.g. Aug">
+         <label for="birth_month">Campaign Name:</label>
+         <input type="text" id="birth_month" name='birth_month' placeholder="e.g. GILLIBRAND 2020">
        </div>
        <div>
-         <button type="submit" class="btn btn-default btn-lg">Find these Cesareans!</button>
+         <button type="submit" class="btn btn-default btn-lg">Submit</button>
        </div>
      </form>
    </div>
@@ -63,24 +63,18 @@
    <div class="container">
      <div class="starter-template">
        <h3>Results:</h3>
-       <p class="lead">Below is the result of your query.<br> You just took user input and looked up the information. Now we need to expand the functionality!</p>
      </div>
 
      <table class="table table-hover">
-     <tr><th>index</th><th>Attendant</th><th>Birth Month</th></tr>
+     <tr><th>Committee Name</th><th>2019 Quarter</th><th>Vendor</th><th>City</th><th>State</th><th>Zip Code</th><th>Transaction Date</th><th>Transaction Amount</th><th>Category</th></tr>
      {% for birth in births %}
-     <tr><td>{{ birth['index'] }}</td><td>{{ birth['attendant']}}</td><td> {{ birth['birth_month'] }}</td></tr>
+     <tr><td>{{ birth['CMTE_NM'] }}</td><td>{{ birth['RPT_TP'] }}</td><td>{{ birth['NAME'] }}</td><td>{{ birth['CITY'] }}</td><td>{{ birth['STATE'] }}</td><td>{{ birth['ZIP_CODE'] }}</td><td>{{ birth['TRANSACTION_DT'] }}</td><td>{{ birth['TRANSACTION_AMT'] }}</td><td>{{ birth['PURPOSE'] }}</td></tr>
      {% endfor %}
      </table>
 
 
     </div><!-- /.container -->
 
-   <div class="container">
-     <div class="starter-template">
-       <h3>Another Result:</h3>
-       <p class="lead">Now we've taken the input and called a function from your package.<br>The result is {{the_result}}</p>
-     </div>
 
 
      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

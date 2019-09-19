@@ -9,6 +9,7 @@ May 2019, Donald Lee-Brown
 from flask import render_template
 from flaskexample import app
 from flaskexample.a_model import ModelIt
+from flaskexample.my_model import my_model
 import pandas as pd
 from flask import request
 
@@ -49,25 +50,45 @@ def birthmodel_input():
    return render_template("model_input.html")
 
 @app.route('/model_output')
+# def birthmodel_output():
+#    # pull 'birth_month' from input field and store it
+#    patient = request.args.get('birth_month')
+#
+#    # read in our csv file
+#    dbname = './flaskexample/static/data/births2012_downsampled.csv'
+#    births_db = pd.read_csv(dbname)
+#
+#    # let's only select cesarean births with the specified birth month
+#    births_db = births_db[births_db['delivery_method'] == 'Cesarean']
+#    births_db = births_db[births_db['birth_month'] == patient]
+#
+#    # we really only need the attendant and birth month for this one
+#    births_db = births_db[['attendant', 'birth_month']]
+#
+#    # just select the Cesareans  from the birth dtabase for the month that the user inputs
+#    births = []
+#    for i in range(0, births_db.shape[0]):
+#       births.append(dict(index=births_db.index[i], attendant=births_db.iloc[i]['attendant'],
+#                         birth_month=births_db.iloc[i]['birth_month']))
+#    the_result = ModelIt(patient, births)
+#    return render_template("model_output.html", births=births, the_result=the_result)
+
 def birthmodel_output():
    # pull 'birth_month' from input field and store it
-   patient = request.args.get('birth_month')
+   cmte_name = request.args.get('birth_month')
 
-   # read in our csv file
-   dbname = './flaskexample/static/data/births2012_downsampled.csv'
-   births_db = pd.read_csv(dbname)
-
-   # let's only select cesarean births with the specified birth month
-   births_db = births_db[births_db['delivery_method'] == 'Cesarean']
-   births_db = births_db[births_db['birth_month'] == patient]
-
-   # we really only need the attendant and birth month for this one
-   births_db = births_db[['attendant', 'birth_month']]
-
-   # just select the Cesareans  from the birth dtabase for the month that the user inputs
+   outliers = my_model(cmte_name)
    births = []
-   for i in range(0, births_db.shape[0]):
-      births.append(dict(index=births_db.index[i], attendant=births_db.iloc[i]['attendant'],
-                        birth_month=births_db.iloc[i]['birth_month']))
-   the_result = ModelIt(patient, births)
+   for i in range(0, outliers.shape[0]):
+      births.append(dict(index=outliers.index[i], CMTE_NM=outliers.iloc[i]['CMTE_NM'],
+                         RPT_TP=outliers.iloc[i]['RPT_TP'],
+                         NAME=outliers.iloc[i]['NAME'],
+                         CITY=outliers.iloc[i]['CITY'],
+                         STATE=outliers.iloc[i]['STATE'],
+                         ZIP_CODE=outliers.iloc[i]['ZIP_CODE'],
+                         TRANSACTION_DT=outliers.iloc[i]['TRANSACTION_DT'],
+                         TRANSACTION_AMT=outliers.iloc[i]['TRANSACTION_AMT'],
+                         PURPOSE=outliers.iloc[i]['PURPOSE'],
+                         CATEGORY=outliers.iloc[i]['CATEGORY']))
+   the_result = "empty"
    return render_template("model_output.html", births=births, the_result=the_result)

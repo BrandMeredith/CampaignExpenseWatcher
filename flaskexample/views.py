@@ -16,6 +16,10 @@ from flask import request
 # here's the homepage
 @app.route('/')
 def homepage():
+    return render_template("model_input.html")
+
+@app.route('/bootstrap_template')
+def bootstrap_template():
     return render_template("bootstrap_template.html")
 
 ## example page from tutorial

@@ -10,6 +10,7 @@ from flask import render_template
 from flaskexample import app
 from flaskexample.a_model import ModelIt
 from flaskexample.my_model import my_model
+from flaskexample.dbscan_model import choose_campaign
 import pandas as pd
 from flask import request
 
@@ -81,7 +82,7 @@ def birthmodel_output():
    # pull 'birth_month' from input field and store it
    cmte_name = request.args.get('birth_month')
 
-   outliers = my_model(cmte_name)
+   outliers = choose_campaign(cmte_name)
    births = []
    for i in range(0, outliers.shape[0]):
       births.append(dict(index=outliers.index[i], CMTE_NM=outliers.iloc[i]['CMTE_NM'],

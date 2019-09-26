@@ -4,10 +4,10 @@ from scipy import stats
 
 def my_model(cmte_name  = 'Default'):
     # Read in data
-    df = pd.read_csv("static/data/oppexp.csv", low_memory=False)
+    df = pd.read_csv("./flaskexample/static/data/oppexp.csv", low_memory=False)
     cmte_header = pd.read_csv(
-        "static/data/cm_header_file.csv")  # pull in header for committee names file
-    cmte_names = pd.read_csv("static/data/cm.txt", delimiter="|",
+        "./flaskexample/static/data/cm_header_file.csv")  # pull in header for committee names file
+    cmte_names = pd.read_csv("./flaskexample/static/data/cm.txt", delimiter="|",
                              names=cmte_header.columns)  # pull in committee names file
 
     # Clean data

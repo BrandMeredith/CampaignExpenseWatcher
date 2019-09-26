@@ -28,9 +28,9 @@ def dbscan_model():
     outliers = outliers.sort_values('TRANSACTION_DT',ascending=False)
 
     # Save the outliers in a csv
-    outliers.to_csv('./static/data/AWS_outliers2020.csv')
+    outliers.to_csv('./flaskexample/static/data/AWS_outliers2020.csv')
 
 def choose_campaign(cmte_nm):
-    outliers = pd.read_csv("./static/data/outliers2020.csv", index_col=0)
+    outliers = pd.read_csv("./flaskexample/static/data/outliers2020.csv", index_col=0)
     # Restrict to one campaign
     return outliers.loc[outliers['CMTE_NM']==cmte_nm,CORE_COLUMNS]

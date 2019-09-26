@@ -6,8 +6,8 @@ def my_model(cmte_name  = 'Default'):
     # Read in data
     df = pd.read_csv("static/data/oppexp.csv", low_memory=False)
     cmte_header = pd.read_csv(
-        "~/Documents/Insight/Data - Insight/cm20/cm_header_file.csv")  # pull in header for committee names file
-    cmte_names = pd.read_csv("~/Documents/Insight/Data - Insight/cm20/cm.txt", delimiter="|",
+        "static/data/cm_header_file.csv")  # pull in header for committee names file
+    cmte_names = pd.read_csv("static/data/cm.txt", delimiter="|",
                              names=cmte_header.columns)  # pull in committee names file
 
     # Clean data

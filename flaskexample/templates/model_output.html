@@ -274,7 +274,7 @@ autocomplete(document.getElementById("myInput"), countries);
      <table class="table table-hover">
      <tr><th>Committee Name</th><th>Vendor</th><th>City</th><th>State</th><th>Zip Code</th><th>Transaction Date</th><th>Transaction Amount</th><th>Category</th></tr>
      {% for birth in births %}
-     <tr><td>{{ birth['CMTE_NM'] }}</td><td>{{ birth['NAME'] }}</td><td>{{ birth['CITY'] }}</td><td>{{ birth['STATE'] }}</td><td>{{ birth['ZIP_CODE'][:5] }}</td><td>{{ birth['TRANSACTION_DT'] }}</td><td>{{ birth['TRANSACTION_AMT'] }}</td><td>{{ birth['PURPOSE'] }}</td></tr>
+     <tr><td>{{ birth['CMTE_NM'] }}</td><td>{{ birth['NAME'] }}</td><td>{{ birth['CITY'] }}</td><td>{{ birth['STATE'] }}</td><td>{{ birth['ZIP_CODE'][:5] }}</td><td>{{ birth['TRANSACTION_DT'] }}</td><td class="text-right">{{ birth['TRANSACTION_AMT'] }}</td><td>{{ birth['PURPOSE'] }}</td></tr>
      {% endfor %}
      </table>
 

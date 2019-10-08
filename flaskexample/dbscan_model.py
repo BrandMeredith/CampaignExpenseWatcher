@@ -40,4 +40,5 @@ def choose_campaign(cmte_nm):
 def format_output(outliers):
     # Take in the outliers dataframe, format its columns in place, and return it
     outliers['TRANSACTION_AMT'] = outliers['TRANSACTION_AMT'].apply(lambda x: '${:,.2f}'.format(x))
+    outliers = outliers.fillna('--')
     return outliers

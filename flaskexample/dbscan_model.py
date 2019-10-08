@@ -31,6 +31,13 @@ def dbscan_model():
     outliers.to_csv('./flaskexample/static/data/AWS_outliers2020.csv')
 
 def choose_campaign(cmte_nm):
-    outliers = pd.read_csv("./flaskexample/static/data/outliers2020.csv", index_col=0)
+    outliers = pd.read_csv("./flaskexample/static/data/outliers2020.csv", index_col=0, dtype={'ZIP_CODE':str})
+    outliers = format_output(outliers)
+
     # Restrict to one campaign
     return outliers.loc[outliers['CMTE_NM']==cmte_nm,CORE_COLUMNS]
+
+def format_output(outliers):
+    # Take in the outliers dataframe, format its columns in place, and return it
+    outliers['TRANSACTION_AMT'] = outliers['TRANSACTION_AMT'].apply(lambda x: '${:,.2f}'.format(x))
+    return outliers

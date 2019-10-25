@@ -1,7 +1,3 @@
-### Simple Flask Template
+Transparency in political spending is incredibly important. The Federal Elections Commission (FEC) -- the cop on the beat -- fined campaigns over $2.5 million so far this year alone. Yet the FEC largely relies on outside information to start an investigation such as newspaper reports and whistle-blowers. The FEC and other watchdog groups need a smart tool to sift through the millions of transactions and flag the unusual ones. CampaignExpenseWatcher does just this.
 
-This is a Flask app built off the [standard bootstrap template](https://getbootstrap.com/docs/3.3/) that includes additional examples of how to link to subpages, tables, and model returns. 
-
-This was tested with an Anaconda distribution of python with the package versions listed in ``requirements.txt`` on a Mac. You don't need all those packages for this to work - all you should need is a python distribution (e.g. Anaconda) and install flask (e.g. ``conda install flask`` from the terminal). 
-
-Then navigate to the directory you downloaded this repository to and launch ``run.py`` from your virtual environment. Then if everything worked you should be able to go to ``http://localhost:5000/`` and see your web app! 
+The site is active now! Check it out at [cew.works](https://cew.works)
